@@ -1,3 +1,4 @@
+import math
 def is_palindrome(n):
     '''
     Determina daca un numar este palindrom(numar care scris invers este egal cu el insusi) sau nu
@@ -30,7 +31,7 @@ def get_n_choose_k(n,k):
     Input: 
     n, k numere naturale, 0 <= k <= n
     Output:
-    Combinarile de n luate cate k, numar natural
+    O lista de patrate perfecte care satisfac relatia: a <= pp si pp <= b
     '''
 
     i=1
@@ -55,11 +56,32 @@ def test_get_n_choose_k():
     assert get_n_choose_k(10,8)==45
     assert get_n_choose_k(10,0)==1
 
+def get_perfect_squares(start, end):
+    """
+    Determina patratele perfecte din intervalul inchis dat
+    Input:
+    start, end - numere intregi, start,end >=0 (capetele intervalului inchis)
+    Output:
+    Lista patratele perfecte care satisfac relatia: start <= pp <= end
+    """
+    lst=[]
+    for x in range(start, end+1):
+        if(math.sqrt(x)==int(math.sqrt(x))):
+            lst.append(x)
+    return lst
+
+def test_get_perfect_squares():
+    assert get_perfect_squares(1,10)==[1,4,9]
+    assert get_perfect_squares(10,25)==[16,25]
+    assert get_perfect_squares(1,100)==[1,4,9,16,25,36,49,64,81,100]
+    assert get_perfect_squares(2,3)==[]
+
 def main():
     while True:
         print("Alege o problema: ")
         print("1.Determină dacă un număr dat este palindrom")
         print("2.Combinari de n luate cate k")
+        print("3.Afiseaza toate patratele perfecte dintr-un interval inchis dat")
         print("x.Exit")
         nr=input()
         if nr=='1':
@@ -72,6 +94,14 @@ def main():
             n=int(input("Introdu valoarea n: "))
             k=int(input("Introdu valoarea k: "))
             print(f"Sunt {get_n_choose_k(n,k)} combinari de n luate cate k")
+        elif nr=='3':
+            start=int(input("Introdu capatul stang: "))
+            end=int(input("Introduce capatul drept: "))
+            pp=get_perfect_squares(start,end)
+            if len(pp)!=0:
+                print(f"Patratele perfecte din intervalul [{start},{end}] sunt: {pp}")
+            else:
+                print(f"Nu exista patrate perfecte in intervalul [{start},{end}]")
         elif nr=='x':
             break
         else:
@@ -79,4 +109,5 @@ def main():
 
 test_is_palindrome()
 test_get_n_choose_k()
+test_get_perfect_squares()
 main()
