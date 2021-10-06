@@ -29,9 +29,9 @@ def get_n_choose_k(n,k):
     '''
     Calculeaza combinari de n luate cate k
     Input: 
-    n, k numere naturale, 0 <= k <= n
+    n, k numere intregi, 0 <= k <= n
     Output:
-    O lista de patrate perfecte care satisfac relatia: a <= pp si pp <= b
+    Combinarile de n luate cate k, valoare intreaga
     '''
 
     i=1
@@ -93,7 +93,7 @@ def main():
         elif nr=='2':
             n=int(input("Introdu valoarea n: "))
             k=int(input("Introdu valoarea k: "))
-            print(f"Sunt {get_n_choose_k(n,k)} combinari de n luate cate k")
+            print(f"Sunt {get_n_choose_k(n,k)} combinari de {n} luate cate {k}")
         elif nr=='3':
             start=int(input("Introdu capatul stang: "))
             end=int(input("Introduce capatul drept: "))
