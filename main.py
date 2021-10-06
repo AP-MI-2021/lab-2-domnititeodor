@@ -62,7 +62,7 @@ def get_perfect_squares(start, end):
     Input:
     start, end - numere intregi, start,end >=0 (capetele intervalului inchis)
     Output:
-    Lista patratele perfecte care satisfac relatia: start <= pp <= end
+    Lista patratelor perfecte care satisfac relatia: start <= pp <= end
     """
     lst=[]
     for x in range(start, end+1):
